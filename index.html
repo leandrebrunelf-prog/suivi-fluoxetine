@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#171222" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <title>Suivi Fluoxétine</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Suivi quotidien</p>
+        <h1>Fluoxétine</h1>
+      </div>
+      <button id="exportBtn" class="icon-button" type="button" title="Exporter les données" aria-label="Exporter les données">⇩</button>
+    </header>
+
+    <aside id="installBanner" class="install-banner" aria-label="Installer l’application">
+      <span><strong>Installer sur le téléphone</strong><br />Utilisable hors ligne après installation.</span>
+      <button id="installBtn" type="button">Installer</button>
+    </aside>
+
+    <section class="notice" role="note">
+      <strong>Suivi de mon traitement</strong>
+      <span>Prochain rendez-vous : 07/12/26</span>
+    </section>
+
+    <nav class="tabs" aria-label="Sections">
+      <button class="tab active" type="button" data-view="journal">Journal</button>
+      <button class="tab" type="button" data-view="tableau">Tableau</button>
+      <button class="tab" type="button" data-view="graphiques">Graphiques</button>
+    </nav>
+
+    <section id="journalView" class="view active">
+      <form id="entryForm" class="card form-card">
+        <h2>Nouvelle saisie</h2>
+        <div class="grid two-cols">
+          <label>Jour
+            <input id="date" name="date" type="date" required />
+          </label>
+          <label>Heure de prise
+            <input id="time" name="time" type="time" required />
+          </label>
+        </div>
+
+        <div id="sliders"></div>
+
+        <label>Effets physiques notables
+          <textarea id="physicalEffects" name="physicalEffects" rows="3" placeholder="Ex. nausée, fatigue, maux de tête…"></textarea>
+        </label>
+
+        <button class="primary-button" type="submit">Ajouter au journal</button>
+      </form>
+
+      <section class="card">
+        <div class="section-heading">
+          <h2>Dernières saisies</h2>
+          <button id="clearBtn" class="text-button" type="button">Tout effacer</button>
+        </div>
+        <div id="recentEntries" class="recent-list"></div>
+      </section>
+    </section>
+
+    <section id="tableauView" class="view">
+      <section class="card table-card">
+        <h2>Tableau des données</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Jour</th>
+                <th>Heure</th>
+                <th>Anxiété</th>
+                <th>Tristesse / pleurs</th>
+                <th>Dévalorisation</th>
+                <th>Difficultés de concentration / perte de mémoire</th>
+                <th>Troubles du sommeil</th>
+                <th>Effets physiques</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="entriesTable"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section id="graphiquesView" class="view">
+      <div id="charts" class="charts-grid"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

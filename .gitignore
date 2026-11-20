@@ -1,0 +1,5 @@
+# Aucun fichier de données personnelle local n'est utilisé par l'application
+*.csv
+*.json.local
+.DS_Store
+Thumbs.db
